@@ -11,7 +11,7 @@ environ.Env.read_env()
 SECRET_KEY = env("DOCKER_SECRET_KEY")
 DEBUG = True
 
-ALLOWED_HOSTS = ["localhost", "127.0.0.1", "[::1]"]
+ALLOWED_HOSTS = ["localhost", "127.0.0.1", "49.13.196.23" "[::1]"]
 
 DATABASES = {
     'default': {

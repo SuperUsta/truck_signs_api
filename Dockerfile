@@ -6,7 +6,7 @@ COPY requirements.txt .
 COPY entrypoint.sh /entrypoint.sh
 
 
-RUN apt-get update && apt-get install -y --no-install-recommends \
+RUN chmod +x /entrypoint.sh && apt-get update && apt-get install -y --no-install-recommends \
     netcat-openbsd postgresql-client \
  && rm -rf /var/lib/apt/lists/*
 
