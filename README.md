@@ -37,7 +37,7 @@ __Signs for Trucks__ is an online store to buy pre-designed vinyls with custom l
 
 1. Be sure to add your ip at truck_signs_api\truck_signs_designs\settings\test_docker.py
     ```
-    ALLOWED_HOSTS = ["localhost", "127.0.0.1", "[::1]"]
+    ALLOWED_HOSTS = ["localhost", "127.0.0.1",<your-server-ip>, "[::1]"]
     ```
 2. Add a volume(once)
     ```
