@@ -117,8 +117,6 @@ celerybeat.pid
 *.sage.py
 
 # Environments
-truck_signs_designs/settings/simple_env_config.env
-*.env"
 .env
 .env/
 .venv/
