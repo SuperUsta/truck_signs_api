@@ -17,15 +17,16 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 ROOT_BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 TEMPLATES_DIR = os.path.join(ROOT_BASE_DIR,'templates')
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
+import environ
+from .base import *
 
+env = environ.Env()
+environ.Env.read_env()
 
-
-ALLOWED_HOSTS = ['0.0.0.0', 'localhost', '127.0.0.1', '49.13.196.23']
-
+ALLOWED_HOSTS = env.list("ALLOWED_HOSTS", default=["localhost"])
 
 # Application definition
 

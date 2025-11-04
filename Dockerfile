@@ -1,9 +1,10 @@
-FROM python:3.8
+FROM python:3.8.slim
 
 WORKDIR /app
 
 COPY requirements.txt .
 COPY entrypoint.sh /entrypoint.sh
+COPY truck_signs_designs/settings/.env /app/truck_signs_designs/settings/.env
 
 
 RUN chmod +x /entrypoint.sh && apt-get update && apt-get install -y --no-install-recommends \
@@ -14,7 +15,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . /app/
 
-WORKDIR /app/truck_signs_api
+WORKDIR /app
 
 EXPOSE 8000
 

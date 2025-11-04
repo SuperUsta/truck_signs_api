@@ -6,38 +6,31 @@
 
 ![Python version](https://img.shields.io/badge/Pythn-3.8-4c566a?logo=python&&longCache=true&logoColor=white&colorB=pink&style=flat-square&colorA=4c566a) ![Django version](https://img.shields.io/badge/Django-2.2.8-4c566a?logo=django&&longCache=truelogoColor=white&colorB=pink&style=flat-square&colorA=4c566a) ![Django-RestFramework](https://img.shields.io/badge/Django_Rest_Framework-3.12.4-red.svg?longCache=true&style=flat-square&logo=django&logoColor=white&colorA=4c566a&colorB=pink)
 
-
 </div>
-
-## Table of Contents
-1 [Description](#description)
-2.[Prerequisites](#Prerequisites)
-3.[Installation](#installation)
-4.[Screenshots of the Django Backend Admin Panel](#screenshots)
-5.[Useful Links](#useful_links)
-
 
 
 ## Description
 
 __Signs for Trucks__ is an online store to buy pre-designed vinyls with custom lines of letters (often call truck letterings). The store also allows clients to upload their own designs and to customize them on the website as well. Aside from the vinyls that are the main product of the store, clients can also purchase simple lettering vinyls with no truck logo, a fire extinguisher vinyl, and/or a vinyl with only the truck unit number (or another number selected by the client).
 
-### PREREQUISITIES
+## Table of Contents
+* 1.[Quickstart](#quickstart)
+* 2.[Usage](#usage)
+* 3.[Screenshots of the Django Backend Admin Panel](#screenshots)
+* 4.[Useful Links](#useful_links)
 
-- Python 3.8
-- Django 2.2.8
-- Django 3.12.4
 
 ## Quickstart
 1. Clone the following Github Repository on your VServer.
     ```
     git clone git@github.com:SuperUsta/truck_signs_api.git
+    cd truck_signs_api
     ```
 ### Build-Dockerimage 
 
-1. Be sure to add your ip at truck_signs_api\truck_signs_designs\settings\test_docker.py
+1. Be sure to add your ip at truck_signs_api\truck_signs_designs\settings\simple_env_config.env
     ```
-    ALLOWED_HOSTS = ["localhost", "127.0.0.1",<your-server-ip>, "[::1]"]
+    ALLOWED_HOSTS = <your-server-ip>
     ```
 2. Add a volume(once)
     ```
@@ -51,27 +44,34 @@ __Signs for Trucks__ is an online store to buy pre-designed vinyls with custom l
 
 4.  Run your Docker image at background
     ```
-    --detach --name web --network trucksign-net --env-file "<path>\truck-sign-api\truck_signs_api\truck_signs_designs\settings\.env" -v trucksign_data:/app --publish 8000:8000 truck_sign_api
+    docker run --detach --name web --network trucksign-net --env-file "<path>\truck-sign-api\truck_signs_api\truck_signs_designs\settings\.env" -v trucksign_data:/app --publish 8000:8000 truck_sign_api
     ```
 5. Run your Docker databanse at background
     ```
-    --detach --name db --network trucksign-net --env-file "<path>\truck-sign-api\truck_signs_api\truck_signs_designs\settings\.env" -v trucksigns_db_data:/var/lib/postgresql/data --restart unless-stopped postgres:13 --restart unless-stopped
+    docker run --detach --name db --network trucksign-net --env-file "<path>\truck-sign-api\truck_signs_api\truck_signs_designs\settings\.env" -v trucksigns_db_data:/var/lib/postgresql/data --restart unless-stopped postgres:13 --restart unless-stopped
     ```
-6. optional you can check your container and database works
+
+6. Reach the app:
+    ```
+    <localhost>/admin
+    ```
+## Usage
+
+### Start and stop
+1. optional you can check your container and database works
     ```
     docker ps
     ```
-7. stop running container and running database
+2. stop running container and running database
     ```
     docker stop web
     docker stop db
     ```
-8. delete container and database
+3. delete container and database
     ```
     docker rm web
     docker rm db
     ```
-## Usage
 
 ### Creating-Superuser
 1. Navigate in your truck_signs_api folder 
